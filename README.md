@@ -2,7 +2,7 @@
 Templates of AWS Architectures
 
 
-#### Example-1AZ.yml	
+#### VPC-NATGateway-PrivateSubnet	.yml
 * 1 VPC
 * 1 Avaibility Zone
 * 2 subnets
@@ -10,3 +10,7 @@ Templates of AWS Architectures
   * 1 Private subnet
 * 1 Internet Gateway
 * 1 NAT Gateway
+
+
+#### Example-1AZ.yml
+* 
