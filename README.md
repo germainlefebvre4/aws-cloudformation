@@ -13,4 +13,5 @@ Templates of AWS Architectures
 
 
 #### Example-1AZ.yml
+![alt text](https://cloudcraft.co/api/blueprint/8b7a55dd-a480-420d-89bf-0e65b0a8578e/png?grid=false&transparent=true&scale=1)
 * 
