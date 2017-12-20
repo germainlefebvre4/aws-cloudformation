@@ -1,0 +1,12 @@
+Resources:
+  PublicSubnet:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      CidrBlock: 10.0.0.0/26
+      AvailabilityZone:
+        'Fn::Join':
+          - ''
+          - - |
+            - !Ref 'AWS::Region'
+            - 'a'
+      VpcId: !Ref VPC

@@ -1,0 +1,7 @@
+Resources:
+  IAMInstanceProfileApplication:
+    DependsOn: IAMRoleApplication
+    Type: "AWS::IAM::InstanceProfile"
+    Properties:
+      Roles:
+        - !Ref IAMRoleApplication

@@ -1,0 +1,3 @@
+Resources:
+  InternetGateway:
+    Type: 'AWS::EC2::InternetGateway'

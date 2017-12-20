@@ -1,0 +1,24 @@
+Resources:
+  WebServerFleet:
+    Type: 'AWS::AutoScaling::AutoScalingGroup'
+    DependsOn:
+      - PublicRoute
+    Properties:
+      VPCZoneIdentifier:
+        - !Ref PrivateSubnet
+      LaunchConfigurationName: !Ref WebServerLaunchConfig
+      MinSize: '1'
+      MaxSize: '4'
+      DesiredCapacity: !Ref WebServerCount
+      LoadBalancerNames:
+        - !Ref PublicElasticLoadBalancer
+    CreationPolicy:
+      ResourceSignal:
+        Timeout: PT15M
+        Count: !Ref WebServerCount
+    UpdatePolicy:
+      AutoScalingRollingUpdate:
+        MinInstancesInService: '1'
+        MaxBatchSize: '1'
+        PauseTime: PT5M
+        WaitOnResourceSignals: 'no'

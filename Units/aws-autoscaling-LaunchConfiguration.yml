@@ -1,0 +1,16 @@
+Resources:
+  WebServerLaunchConfig:
+    DependsOn: IAMInstanceProfileApplication
+    Type: 'AWS::AutoScaling::LaunchConfiguration'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-xxx
+      KeyName: !Ref KeyName
+      AssociatePublicIpAddress: 'false'
+      UserData: !Base64 
+        'Fn::Join':
+          - ''
+          - - |
+              #!/bin/bash
+            - |
+              cd /tmp

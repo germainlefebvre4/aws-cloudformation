@@ -1,0 +1,51 @@
+Resources:
+  WebServerLaunchConfig:
+    DependsOn: IAMInstanceProfileApplication
+    Type: 'AWS::AutoScaling::LaunchConfiguration'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-xxxxxx
+      KeyName: !Ref KeyName
+      AssociatePublicIpAddress: 'false'
+      UserData: !Base64 
+        'Fn::Join':
+          - ''
+          - - |
+              #!/bin/bash
+            - |
+              cd /tmp
+              
+            - |
+              # CloudFormation response to the AutoScalingGroup
+            - |+
+
+            - /opt/aws/bin/cfn-signal --success=true
+            - ' --stack='
+            - !Ref 'AWS::StackName'
+            - ' --resource=WebServerFleet'
+            - ' --region='
+            - !Ref 'AWS::Region'
+            - |+
+  WebServerFleet:
+    Type: 'AWS::AutoScaling::AutoScalingGroup'
+    DependsOn:
+      - PublicRoute
+    Properties:
+      VPCZoneIdentifier:
+        - !Ref PrivateSubnet
+      LaunchConfigurationName: !Ref WebServerLaunchConfig
+      MinSize: '1'
+      MaxSize: '4'
+      DesiredCapacity: 1
+      LoadBalancerNames:
+        - !Ref PublicElasticLoadBalancer
+    CreationPolicy:
+      ResourceSignal:
+        Timeout: PT15M
+        Count: 1
+    UpdatePolicy:
+      AutoScalingRollingUpdate:
+        MinInstancesInService: '1'
+        MaxBatchSize: '1'
+        PauseTime: PT5M
+        WaitOnResourceSignals: 'no'
