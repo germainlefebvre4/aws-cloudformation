@@ -1,0 +1,5 @@
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt 
+      - PublicElasticLoadBalancer
+    Description: General Outputs
