@@ -8,7 +8,7 @@ Templates of AWS Architectures
 #### VPC with 1 AZ, 2 Subnet (Public and Private) and 2 Autoscaling on Bastion and WebServers
 aws_1-az_2-subnets_1-bastion-asg_1-webserver-asg.yml
 
-![alt text](https://raw.githubusercontent.com/germainlefebvre4/aws-cloudformation/master/schemas/AWS%20Archi%20-%201%20AZ%20V2.png)
+![alt text](schemas/AWS%20Archi%20-%201%20AZ%20V2.png)
 
 Contents :
 * 1 VPC
@@ -27,7 +27,7 @@ CloudFormation contents :
 #### VPC with 1 AZ, 4 Subnets (Public and Private) and 2 Autoscaling on Bastion and WebServers
 aws_2-az_4-subnets_1-bastion-asg_1-webserver-asg.yml
 
-![alt text](https://raw.githubusercontent.com/germainlefebvre4/aws-cloudformation/master/schemas/AWS%20Archi%20-%202%20AZ%20V2.png)
+![alt text](schemas/AWS%20Archi%20-%202%20AZ%20V2.png)
 
 Contents :
 * 1 VPC
